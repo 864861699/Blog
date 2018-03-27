@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>生活是个圈</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://aixiangbolg.cn/"/>
+  <updated>2018-03-27T02:50:56.548Z</updated>
+  <id>https://aixiangbolg.cn/</id>
+  
+  <author>
+    <name>生活是个圈</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://aixiangbolg.cn/2018/03/27/hello-world/"/>
+    <id>https://aixiangbolg.cn/2018/03/27/hello-world/</id>
+    <published>2018-03-27T02:50:56.548Z</published>
+    <updated>2018-03-27T02:50:56.548Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>spring boot 中@Scheduled</title>
+    <link href="https://aixiangbolg.cn/2017/11/09/spring-boot-%E4%B8%AD-Scheduled/"/>
+    <id>https://aixiangbolg.cn/2017/11/09/spring-boot-中-Scheduled/</id>
+    <published>2017-11-09T10:51:53.000Z</published>
+    <updated>2018-03-27T02:50:56.549Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Scheduled使用"><a href="#Scheduled使用" class="headerlink" title="@Scheduled使用"></a>@Scheduled使用</h3><ol><li>启动类需要加上@EnableScheduling注解表示启用定时任务</li><li>具体实现定时任务的类需要加上@Component，表明该类为一个组件</li><li>具体的方法需要加上@Scheduled</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@Component</span><br><span class="line">public class TaskDemo &#123;</span><br><span class="line">    </span><br><span class="line">    @Scheduled(cron = &quot;0 0 2 * * ?&quot;)　　//每天凌晨两点执行</span><br><span class="line">        void doSomethingWith()&#123;</span><br><span class="line">            logger.info(&quot;定时任务开始......&quot;);</span><br><span class="line">            long begin = System.currentTimeMillis();</span><br><span class="line">        </span><br><span class="line">            //执行数据库操作</span><br><span class="line">        </span><br><span class="line">            long end = System.currentTimeMillis();</span><br><span class="line">            logger.info(&quot;定时任务结束，共耗时：[&quot; + (end-begin) / 1000 + &quot;]秒&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="Scheduled-注解中cron参数的计划时间："><a href="#Scheduled-注解中cron参数的计划时间：" class="headerlink" title="@Scheduled 注解中cron参数的计划时间："></a>@Scheduled 注解中cron参数的计划时间：</h3><p><strong>按顺序依次为:</strong></p><ol><li>秒（0~59）</li><li>分钟（0~59）</li><li>小时（0~23）</li><li>天（月）（0~31，但是你需要考虑你月的天数）</li><li>月（0~11）</li><li>天（星期）（1~7 1=SUN 或 SUN，MON，TUE，WED，THU，FRI，SAT）</li><li>年份（1970－2099）</li></ol><table><thead><tr><th>字段</th><th>允许值</th><th>允许的特殊字符 </th></tr></thead><tbody><tr><td>秒</td><td>0-59</td><td>, - * /</td></tr><tr><td>分</td><td>0-59</td><td>, - * /</td></tr><tr><td>小时</td><td>0-23</td><td>, - * /</td></tr><tr><td>日期</td><td>1-31</td><td>, - * ? / L W C</td></tr><tr><td>月份</td><td>1-12 或者 JAN-DEC</td><td>, - * /</td></tr><tr><td>星期</td><td>1-7 或者 SUN-SAT</td><td>, - * ? / L C #</td></tr><tr><td>年（可选）</td><td>留空, 1970-2099</td><td>, - * /</td></tr></tbody></table><h3 id="详细用例"><a href="#详细用例" class="headerlink" title="详细用例:"></a>详细用例:</h3><blockquote><p>其中每个元素可以是一个值(如6),一个连续区间(9-12),一个间隔时间(8-18/4)(/表示每隔4小时),一个列表(1,3,5),通配符。由于”月份中的日期”和”星期中的日期”这两个元素互斥的,必须要对其中一个设置?.<br>0 0 10,14,16 <em> </em> ? 每天上午10点，下午2点，4点<br>0 0/30 9-17 <em> </em> ?   朝九晚五工作时间内每半小时<br>0 0 12 ? <em> WED 表示每个星期三中午12点<br>“0 0 12 </em> <em> ?” 每天中午12点触发<br>“0 15 10 ? </em> <em>“ 每天上午10:15触发<br>“0 15 10 </em> <em> ?” 每天上午10:15触发<br>“0 15 10 </em> <em> ? </em>“ 每天上午10:15触发<br>“0 15 10 <em> </em> ? 2005” 2005年的每天上午10:15触发<br>“0 <em> 14 </em> <em> ?” 在每天下午2点到下午2:59期间的每1分钟触发<br>“0 0/5 14 </em> <em> ?” 在每天下午2点到下午2:55期间的每5分钟触发<br>“0 0/5 14,18 </em> <em> ?” 在每天下午2点到2:55期间和下午6点到6:55期间的每5分钟触发<br>“0 0-5 14 </em> <em> ?” 在每天下午2点到下午2:05期间的每1分钟触发<br>“0 10,44 14 ? 3 WED” 每年三月的星期三的下午2:10和2:44触发<br>“0 15 10 ? </em> MON-FRI” 周一至周五的上午10:15触发<br>“0 15 10 15 <em> ?” 每月15日上午10:15触发<br>“0 15 10 L </em> ?” 每月最后一日的上午10:15触发<br>“0 15 10 ? <em> 6L” 每月的最后一个星期五上午10:15触发<br>“0 15 10 ? </em> 6L 2002-2005” 2002年至2005年的每月的最后一个星期五上午10:15触发<br>“0 15 10 ? <em> 6#3” 每月的第三个星期五上午10:15触发<br>有些子表达式能包含一些范围或列表<br>例如：子表达式（天（星期））可以为 “MON-FRI”，“MON，WED，FRI”，“MON-WED,SAT”<br>“</em>”字符代表所有可能的值<br>因此，“<em>”在子表达式（月）里表示每个月的含义，“</em>”在子表达式（天（星期））表示星期的每一天</p><p>“/”字符用来指定数值的增量<br>例如：在子表达式（分钟）里的“0/15”表示从第0分钟开始，每15分钟<br>        在子表达式（分钟）里的“3/20”表示从第3分钟开始，每20分钟（它和“3，2  3&gt;，43”）的含义一样  </p><p>“？”字符仅被用于天（月）和天（星期）两个子表达式，表示不指定值<br>当2个子表达式其中之一被指定了值以后，为了避免冲突，需要将另一个子表达式的  值设&gt;为“？”  </p><p>“L” 字符仅被用于天（月）和天（星期）两个子表达式，它是单词“last”的缩写<br>但是它在两个子表达式里的含义是不同的。<br>在天（月）子表达式中，“L”表示一个月的最后一天<br>在天（星期）自表达式中，“L”表示一个星期的最后一天，也就是SAT<br>如果在“L”前有具体的内容，它就具有其他的含义了<br>例如：“6L”表示这个月的倒数第６天，“ＦＲＩＬ”表示这个月的最一个星期五<br>注意：在使用“L”参数时，不要指定列表或范围，因为这会导致问题  </p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Scheduled使用&quot;&gt;&lt;a href=&quot;#Scheduled使用&quot; class=&quot;headerlink&quot; title=&quot;@Scheduled使用&quot;&gt;&lt;/a&gt;@Scheduled使用&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;启动类需要加上@EnableScheduling注解
+      
+    
+    </summary>
+    
+      <category term="java" scheme="https://aixiangbolg.cn/categories/java/"/>
+    
+      <category term="Spring" scheme="https://aixiangbolg.cn/categories/java/Spring/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>配置博客</title>
+    <link href="https://aixiangbolg.cn/2017/11/01/%E9%85%8D%E7%BD%AE%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://aixiangbolg.cn/2017/11/01/配置博客/</id>
+    <published>2017-11-01T11:18:52.000Z</published>
+    <updated>2018-03-27T02:50:56.550Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>第一次开始</title>
+    <link href="https://aixiangbolg.cn/2017/11/01/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%BC%80%E5%A7%8B/"/>
+    <id>https://aixiangbolg.cn/2017/11/01/第一次开始/</id>
+    <published>2017-11-01T06:48:11.000Z</published>
+    <updated>2018-03-27T02:50:56.549Z</updated>
+    
+    <content type="html"><![CDATA[<table><thead><tr><th>语法</th><th>说明</th></tr></thead><tbody><tr><td>git init</td><td>初始化</td></tr><tr><td>git status</td><td>查看状态</td></tr><tr><td>git checkout -b aaa</td><td>复制分支并声明</td></tr><tr><td>git checkout 分支名</td><td>切换分支</td></tr><tr><td>git branch –D 分支名</td><td>删除分支</td></tr><tr><td>git remote -v</td><td>查看地址</td></tr><tr><td>git remote add aixiang <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a></td><td>添加地址</td></tr><tr><td>git add</td><td>添加文件到分支中</td></tr><tr><td>git log</td><td>查看日志按Q结束</td></tr><tr><td>git pull origin release (orgin 线上远程仓库名，release 远程分支名)</td><td>从远程直接拉取</td></tr><tr><td>git branch</td><td>查看分支</td></tr><tr><td>git commit -m ‘备注’</td><td>保存到本地仓库</td></tr><tr><td>git push aixiang release （aixiang 远程本地仓库，release 远程本地分支名）</td><td>推送到远程本地仓库</td></tr><tr><td>git push aixiang release -f（aixiang 远程本地仓库，release 远程本地分支名）</td><td>推送到远程本地仓库，-f为强制提交，多用于已经创建合并请求却需要修改文件</td></tr><tr><td>git status</td><td>缓存当前分支文件，ps：查看状态红色的文件没有add添加到分支的文件</td></tr><tr><td>git status list</td><td>查看缓存的历史</td></tr><tr><td>git status pop</td><td>还原上一次的缓存</td></tr><tr><td>git fetch origin release （origin远程仓库名，release 远程分支名）</td><td>获取线上最新数据</td></tr><tr><td>git merge origin/release （origin远程仓库名，release 远程分支名）</td><td>将origin/release合并到当前的分支</td></tr></tbody></table><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">更新思路：</span><br><span class="line">- 没有冲突</span><br><span class="line">- 直接出错</span><br><span class="line">1.git stash 暂存</span><br><span class="line">2.合并 git merge origin/release（将origin/release合并到当前的分支）</span><br><span class="line">3.手动解决冲突</span><br><span class="line">4.add ==&gt; commit</span><br><span class="line">5.stash pop</span><br><span class="line">3. add ==&gt; commit ==&gt; push</span><br></pre></td></tr></table></figure><hr><ul><li>推送过程中<ul><li>建议先更新再推送，如何做？<ol><li>先获取最新数据</li><li>没冲突直接合并，如果有冲突先缓存当前文件</li><li>此时如果有冲突手动修改，然后释放缓存文件</li><li>再次修改冲突文件，依次添加到分支</li><li>提交本地仓库，如果创建合并请求了，应当强制提交</li></ol></li></ul></li><li>具体代码如下： <ul><li>git fetch origin release  //获取最新数据</li><li>if 此时如何有冲突</li><li>git stash //先缓存当前文件</li><li>git merge origin/release //合并线上文件</li><li>//根据提示手动修改冲突</li><li>git stash pop //释放缓存文件</li><li>//手动修改冲突文件</li><li>git add  //依次添加文件进入分支</li><li>git merge origin/release  //手动合并</li><li>git commit -m ‘备注’ //提交本地仓库</li><li>git push origin/release //提交至线上本地仓库</li><li>if 此时已经创建过合并请求需要</li><li>git push origin/release -f //强制提交至线上本地仓库<ul><li>2.如果直接推送可能会有合并冲突，已经有合并冲突时如何解决？</li><li>假如已经有冲突应该先更新最新的线上仓库数据，然后可以采用上述1,过程执行</li></ul></li></ul></li></ul><hr><ul><li><p>多分支</p><ul><li>A正在开发，没有开发完，现在紧急开发B</li><li>首先我们需要创建一个和线上同步数据的分支，一般采用release,</li><li>注：此分支不可以用来写代码，用来更新线上最新数据</li><li>若现在A处于半开发状态，紧急处理B，我们应该在release分支下新建一个分支，如B。</li><li>此时切换分支到B分支进行开发</li></ul></li><li><p>具体代码如下：</p><ul><li>git branch //查看分支</li><li>git checkout -b aaa //复制并声明分支</li><li>git checkout aaa  //切换到指定分支</li></ul></li></ul><ul><li>新手使用步骤：<br>1.首先初始化：git init<br>2.分别添加本地地址，及线上分支地址：git remote add aixiang <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a><br>3.查看添加地址是否正确：git remote -v<br>4.拉取代码：git fetch origin release 注：origin远程仓库名 release远程仓库分支名<br>5.合并到本地:git merge origin/release    </li></ul><p>解决git中文乱码<br>  //解决窗体乱码    1<br>   git config –global gui.encoding utf-8</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;语法&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;git init&lt;/td&gt;
+&lt;td&gt;初始化&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;git status&lt;/td&gt;
+&lt;td&gt;查
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
